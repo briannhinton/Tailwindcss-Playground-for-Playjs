@@ -1,30 +1,33 @@
-const port = process.env['WEB_APP_PORT'];
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/styles.css',
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            { loader: 'css-loader', options: { importLoaders: 1 } },
-            'postcss-loader',
-          ],
-        }),
-      },
-    ],
-  },
   plugins: [
-    new ExtractTextPlugin('styles.css', {
-      disable: process.env.NODE_ENV === 'development',
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',
     }),
   ],
+  entry:'src/styles.css',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: 'public/',
+            },
+          },
+          'css-loader',
+          'postcss-loader',
+        ],
+      },
+    ],
+  },
 }
