@@ -1,33 +1,24 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
 
 module.exports = {
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'src/index.html',
-    }),
-  ],
-  entry:'src/styles.css',
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './public'),
+    publicPath: '/'
+  }
+
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: 'public/',
-            },
-          },
-          'css-loader',
+          'style-loader',
+          {loader: 'css-loader', options: {importLoaders: 1}},
           'postcss-loader',
         ],
       },
     ],
   },
-}
+};
