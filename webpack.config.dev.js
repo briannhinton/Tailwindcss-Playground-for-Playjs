@@ -11,7 +11,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: (m) => { return /\.(js|jsx)$/.test(m) },
+        exclude: (m) => { return /node_modules/.test(m) },
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+            ]
+          }
+        }
+      },
+      {
+        test: (m) => { return /\.css$/.test(m) },
+        exclude: (m) => { return /node_modules/.test(m) },
         use: [
           'style-loader',
           {loader: 'css-loader', options: {importLoaders: 1}},
