@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "dependencies": {
+    "autoprefixer": "9.7.4",
     "@babel/core": "7.x.x",
     "@babel/preset-env": "7.x.x",
     "babel-loader": "8.x.x",

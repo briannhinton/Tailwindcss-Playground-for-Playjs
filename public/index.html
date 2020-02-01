@@ -7,8 +7,19 @@
   </head>
   <body>
     <div class="min-h-screen flex items-center justify-center">
-      <h1 class="text-5xl text-purple-600 font-sans">This is Tailwind.</h1>
-      <script src="app.bundle.js"></script>
+      <div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="sm:flex sm:items-center px-6 py-4">
+          <img class="block mx-auto sm:mx-0 sm:flex-shrink-0 h-16 sm:h-24 rounded-full" src="https://randomuser.me/api/portraits/women/17.jpg" alt="Woman's Face">
+          <div class="mt-4 sm:mt-0 sm:ml-4 text-center sm:text-left">
+            <p class="text-xl leading-tight">Erin Lindford</p>
+            <p class="text-sm leading-tight text-gray-600">Customer Support Specialst</p>
+            <div class="mt-4">
+              <button class="btn-purple">Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="bundle.js"></script>
   </body>
 </html>

@@ -2,4 +2,12 @@
 
 @tailwind components;
 
+.btn-purple {
+  @apply text-purple-500 border border-purple-500 text-xs font-semibold rounded-full px-4 py-1 leading-normal;
+}
+
+.btn-purple:hover {
+  @apply bg-purple-500 text-white;
+}
+
 @tailwind utilities;
